@@ -50,7 +50,13 @@ class CRM
     print 'Enter a Note: '
     note = gets.chomp
 
-    Contact.create(first_name, last_name, email, note)
+    # Contact.create(first_name, last_name, email, note)
+    contact = Contact.create(
+    first_name:   first_name,
+    last_name:    last_name,
+    email:        email,
+    note:         note
+    )
   end
 
   def modify_existing_contact
@@ -64,9 +70,9 @@ class CRM
     puts "Whats the new #{attribute}"
     value = gets.chomp
 
-    contact = Contact.find(id).first
+    contact = Contact.find(id)
 
-    contact.update(attribute, value)
+    contact.update_attribute(attribute, value)
 
   end
 
@@ -74,12 +80,13 @@ class CRM
 
     print "Provide contact ID please"
     id = gets.to_i
-
+    contact = Contact.find(id)
+    contact.delete
   end
 
   def display_all_contacts
 
-    p Contact.all.inspect
+    print Contact.all.inspect
 
   end
 
@@ -95,11 +102,3 @@ end
 at_exit do
   ActiveRecord::Base.connection.close
 end
-# contact1 = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
-# contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot')
-# contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
-# contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
-#
-# uno = CRM.new
-#
-# uno.main_menu

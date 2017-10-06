@@ -86,13 +86,13 @@ class CRM
 
   def display_all_contacts
 
-    print Contact.all.inspect
+    p Contact.all
 
   end
 
   def search_by_attribute
 
-    Contact.find_by
+  Contact.find_by
 
   end
 

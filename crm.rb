@@ -13,7 +13,7 @@ class CRM
       user_selected = gets.to_i
       call_option(user_selected)
     end
-    
+
   end
 
   def print_main_menu
@@ -92,11 +92,14 @@ class CRM
 
 end
 
-contact1 = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
-contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot')
-contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
-contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
-
-uno = CRM.new
-
-uno.main_menu
+at_exit do
+  ActiveRecord::Base.connection.close
+end
+# contact1 = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
+# contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot')
+# contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
+# contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
+#
+# uno = CRM.new
+#
+# uno.main_menu
